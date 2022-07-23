@@ -1,0 +1,197 @@
+
+<div class="container cont-lista" style="margin-top: 20px;">
+    <div class="row text-title">
+        <h1>LISTA DE PENDIENTES</h1>
+    </div>
+</div>
+
+<div class="container cont-lista" *ngIf="hayDepositos">
+    <div class="row text-title">
+        <h1>Dep&oacute;sitos</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="row">
+        <div>
+            <table
+                    mat-table
+                    [dataSource]="dataSource_depositos"
+                    class="mat-elevation-z8 w-100">
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef >Fecha</th>
+                    <td mat-cell *matCellDef="let element">{{[getFecha(element.horaDeposito)]}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef >Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.cuenta.nombrePropietarioCuenta }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef >Cantidad</th>
+                    <td mat-cell *matCellDef="let element">{{ element.dineroDepositar }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="realizar">
+                    <th mat-header-cell *matHeaderCellDef>Realizar</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button
+                                mat-button
+                                color="primary"
+                                (click)="openDeposito(element.idDeposito)"
+                        >
+                            <mat-icon>touch_app</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container cont-lista" *ngIf="hayPagoCredito">
+    <div class="row text-title">
+        <h1>Pagos de cr&eacute;dito</h1>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row">
+        <div>
+            <table
+                    mat-table
+                    [dataSource]="dataSource_pagoCreditos"
+                    class="mat-elevation-z8 w-100">
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef >Fecha</th>
+                    <td mat-cell *matCellDef="let element">{{[getFecha(element.horaPagoCredito)]}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef >Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.credito.nombrePropietarioCredito }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef >Cantidad</th>
+                    <td mat-cell *matCellDef="let element">{{ element.credito.cuotaCredito }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="realizar">
+                    <th mat-header-cell *matHeaderCellDef>Realizar</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button
+                                mat-button
+                                color="primary"
+                                (click)="openPagoCredito(element.idPagoCredito)"
+                        >
+                            <mat-icon>touch_app</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container cont-lista" *ngIf="hayPagosServicio">
+    <div class="row text-title">
+        <h1>Pagos de servicios</h1>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="row">
+        <div>
+            <table
+                    mat-table
+                    [dataSource]="dataSource_pagoServicios"
+                    class="mat-elevation-z8 w-100">
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef >Fecha</th>
+                    <td mat-cell *matCellDef="let element">{{[getFecha(element.horaPagoServicio)]}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef >Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.servicio.nombrePropietarioServicio }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef >Cantidad</th>
+                    <td mat-cell *matCellDef="let element">{{ element.servicio.pagoServicio }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="realizar">
+                    <th mat-header-cell *matHeaderCellDef>Realizar</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button
+                                mat-button
+                                color="primary"
+                                (click)="openPagoServicio(element.idPagoServicio)"
+                        >
+                            <mat-icon>touch_app</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="container cont-lista" *ngIf="hayDeudas">
+    <div class="row text-title">
+        <h1>Deudas</h1>
+    </div>
+    <div class="row">
+        <div>
+            <table
+                    mat-table
+                    [dataSource]="dataSource_deudas"
+                    class="mat-elevation-z8 w-100">
+
+                <ng-container matColumnDef="fecha">
+                    <th mat-header-cell *matHeaderCellDef >Fecha</th>
+                    <td mat-cell *matCellDef="let element">{{[getFecha(element.horaPrestamo)]}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="nombre">
+                    <th mat-header-cell *matHeaderCellDef >Nombre</th>
+                    <td mat-cell *matCellDef="let element">{{ element.nombrePrestamista }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="cantidad">
+                    <th mat-header-cell *matHeaderCellDef >Cantidad</th>
+                    <td mat-cell *matCellDef="let element">{{ element.cantidadPrestada }}</td>
+                </ng-container>
+
+
+                <ng-container matColumnDef="realizar">
+                    <th mat-header-cell *matHeaderCellDef>Realizar</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button
+                                mat-button
+                                color="primary"
+                                (click)="openDeuda(element.idDeuda)"
+                        >
+                            <mat-icon>touch_app</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns:displayedColumns"></tr>
+            </table>
+        </div>
+    </div>
+
+</div>

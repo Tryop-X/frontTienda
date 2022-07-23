@@ -1,0 +1,52 @@
+
+<div class="container">
+    <div class="row"><h1 style="text-align: center ">
+        {{tipoOperacion}}
+    </h1></div>
+
+    <div class="row">
+
+        <div class="col-md-3">
+
+            <div class="row">
+                <button mat-raised-button color="primary" routerLink="./deposito" (click)="btnDeposito()" >
+
+                    <div class="cont-img-txt">
+                        <img src="assets/deposito.png">
+                        DEPOSITOS
+                    </div>
+                </button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" routerLink="./pagoCredito" (click)="btnPagoCredito()" >
+                    <div class="cont-img-txt">
+                        <img src="assets/pagoCredito.png">
+                        CR&Eacute;DITOS
+                    </div>
+                </button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" routerLink="./pagoServicio" (click)="btnPagoServicio()" >
+                    <div class="cont-img-txt">
+                        <img src="assets/pagoServicio.png">
+                        SERVICIOS
+                    </div>
+                </button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" routerLink="./deuda" (click)="btnDeuda()" >
+                    <div class="cont-img-txt">
+                        <img src="assets/deuda.png">
+                        DEUDAS
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+
+
+

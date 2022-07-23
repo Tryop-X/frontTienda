@@ -1,0 +1,84 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h1 mat-dialog-title>Dep&oacute;sito {{deposito.idDeposito}} </h1>
+    </div>
+    <div  class="col-md-2">
+        <button mat-flat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-fecha">
+                Fecha: {{getFecha(deposito.horaDeposito)}}
+            </div>
+            <div class="col-md-6 text-hora">
+                Hora: {{getHora(deposito.horaDeposito)}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Num cuenta</b>: {{deposito.cuenta.numeroCuenta}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Nombre</b>: {{deposito.cuenta.nombrePropietarioCuenta}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Cantidad</b>: {{deposito.dineroDepositar}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Vuelto</b>: {{deposito.vueltoDeposito}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>DNI</b>: {{deposito.dniDepositante}}
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12">
+                <div class="container text">
+                    <b>Nota</b>: {{deposito.anotacionDeposito}}
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12 text-apuntador">
+                Deposito registrado por <b>{{deposito.nombreApuntador}}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <button mat-raised-button color="primary" (click)="actualizarOperacion()">
+                    <div class="cont-img-txt">
+                        <img alt="guardar" src="assets/actualizarOperacion.png">
+                        Pagar dep&oacute;sito
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="row anular" align="right">
+            <div class="col-md-12 ">
+                <a (click)="anularOperacion()" >Anular deposito</a>
+            </div>
+        </div>
+    </div>
+</div>

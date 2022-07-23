@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>N&Uacute;MERO DE CUENTA</mat-label>
+                <input matInput type="text" id="numC" [formControl]="controlNumCuenta">
+                <mat-error *ngIf="controlNumCuenta.hasError('required')">
+                    No ha puesto ning&uacute;n n&uacute;mero de cuenta
+                </mat-error>
+                <mat-error *ngIf="controlNumCuenta.hasError('pattern')">
+                    Un n&uacute;mero de cuenta solo debe tener n&uacute;meros
+                </mat-error>
+                <mat-error *ngIf="controlNumCuenta.hasError('maxlength')">
+                    N&uacute;mero de cuenta demasiado largo
+                </mat-error>
+                <mat-error *ngIf="controlNumCuenta.hasError('minlength')">
+                    N&uacute;mero de cuenta muy corto
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-6" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>NOMBRE DEL PROPIETARIO</mat-label>
+                <input matInput type="text" [formControl]="controlNombre">
+                <mat-error *ngIf="controlNombre.hasError('required')">
+                    No ha puesto nombre
+                </mat-error>
+                <mat-error *ngIf="controlNombre.hasError('maxlength')">
+                    Nombre demasiado largo
+                </mat-error>
+                <mat-error *ngIf="controlNombre.hasError('minlength')">
+                    Nombre muy corto
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>DNI DEPOSITANTE</mat-label>
+                <input matInput type="text" [formControl]="controlDniDepositante">
+                <mat-error *ngIf="controlDniDepositante.hasError('pattern')">
+                    Un DNI solo debe tener n&uacute;meros
+                </mat-error>
+                <mat-error *ngIf="controlDniDepositante.hasError('maxlength')">
+                    DNI demasiado grande
+                </mat-error>
+                <mat-error *ngIf="controlDniDepositante.hasError('minlength')">
+                    DNi muy peque&ntilde;o
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>CANTIDAD A DEPOSITAR</mat-label>
+                <input matInput type="number" [formControl]="controlCantDeposito">
+                <mat-error *ngIf="controlVueltoDeposito.hasError('required')">
+                    No ha agregado CANTIDAD alguna
+                </mat-error>
+                <mat-error *ngIf="controlVueltoDeposito.hasError('min')">
+                    Tiene que ser mayor a 0
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>VUELTO</mat-label>
+                <input matInput type="number" [formControl]="controlVueltoDeposito">
+                <mat-error *ngIf="controlVueltoDeposito.hasError('required')">
+                    No ha agregado vuelto alguno
+                </mat-error>
+                <mat-error *ngIf="controlVueltoDeposito.hasError('min')">
+                    Tiene que ser mayor a 0
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 " >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>NOTA</mat-label>
+                <input matInput #message maxlength="256" [(ngModel)]="anotacionDeposito" [value]="getAnotacion()" [disabled]="isChecked">
+                <mat-hint align="start"><strong></strong> </mat-hint>
+                <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row" align="center" style="position: relative">
+        <div class="col-md-12" align="center"  style="margin: 0 auto; height: 40px">
+            <span [ngClass]="{'textoCheck' : !isChecked, 'textoUncheck' : isChecked}">DEBEMOS</span>
+            <mat-slide-toggle color="warn" [(ngModel)]="isChecked"></mat-slide-toggle>
+            <span [ngClass]="{'textoCheck' : isChecked, 'textoUncheck' : !isChecked}">NOS DEBEN</span>
+        </div>
+        <div class="col-12" *ngIf="isChecked">
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>NOMBRE DEUDOR</mat-label>
+                <input matInput type="text" [formControl]="controlNombreDeudor">
+                <mat-error *ngIf="controlNombreDeudor.hasError('required')">
+                    No ha puesto ning&uacute;n n&uacute;mero de cuenta
+                </mat-error>
+                <mat-error *ngIf="controlNombreDeudor.hasError('maxlength')">
+                    N&uacute;mero de cuenta demasiado largo
+                </mat-error>
+                <mat-error *ngIf="controlNombreDeudor.hasError('minlength')">
+                    N&uacute;mero de cuenta muy corto
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-raised-button color="primary" (click)="guardar()" [disabled]="esValidoGuardar()">
+                <div class="cont-img-txt">
+                    <img src="assets/guardar.png" [ngClass]="{'img-white': !esValidoGuardar()}">
+                    GUARDAR
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+.example-form {
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.mat-raised-button{
+    width: 100%;
+    font-size: 20px;
+    min-height: 40px;
+    margin-top: 5px;
+    background-color: #8C8C8C;
+}
+img{
+    width: 3.3%;
+    margin-right: 15px;
+    filter: invert(60%);
+}
+
+.img-white{
+    filter: invert(100%);
+}
+.textoCheck{
+    color: black;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.textoUncheck{
+    color: grey;
+    font-size: 16px;
+}
+
+mat-slide-toggle{
+    margin-left: 10px;
+    margin-right: 10px;
+}

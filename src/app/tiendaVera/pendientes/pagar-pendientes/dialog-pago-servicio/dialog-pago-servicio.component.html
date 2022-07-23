@@ -1,0 +1,84 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h1 mat-dialog-title>Pago de cr&eacute;dito {{pagoServicio.idPagoServicio}} </h1>
+    </div>
+    <div  class="col-md-2">
+        <button mat-flat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-fecha">
+                Fecha: {{getFecha(pagoServicio.horaPagoServicio)}}
+            </div>
+            <div class="col-md-6 text-hora">
+                Hora: {{getHora(pagoServicio.horaPagoServicio)}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>C&oacute;digo</b>: {{pagoServicio.servicio.codigoServicio}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Nombre</b>: {{pagoServicio.servicio.nombrePropietarioServicio}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Cuota</b>: {{pagoServicio.servicio.pagoServicio}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Vuelto</b>: {{pagoServicio.vueltoPagoServicio}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Tipo</b>: {{pagoServicio.servicio.tipoServicio}}
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12">
+                <div class="container text">
+                    <b>Nota</b>: {{pagoServicio.anotacionPagoServicio}}
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12 text-apuntador">
+                Deposito registrado por <b>{{pagoServicio.nombreApuntador}}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <button mat-raised-button color="primary" (click)="actualizarOperacion()">
+                    <div class="cont-img-txt">
+                        <img alt="guardar" src="assets/actualizarOperacion.png">
+                        Pagar cr&eacute;dito
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="row anular" align="right">
+            <div class="col-md-12 ">
+                <a (click)="anularOperacion()" >Anular pago de servicio</a>
+            </div>
+        </div>
+    </div>
+</div>

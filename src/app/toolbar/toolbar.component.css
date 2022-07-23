@@ -1,0 +1,31 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+img{
+    filter: invert(80%);
+    width: 30%;
+
+
+}
+
+.cont-user{
+    font-size: 17px;
+    color: darkgray;
+    margin-right: 1%;
+}
+
+.mat-flat-button{
+    color: #f4f4f4;
+    margin-left: 5px;
+    text-decoration: underline;
+    background-color: rgba(0, 0, 0, 0)
+}
+
+.mat-button{
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+mat-icon{
+    margin-right: 4px;
+}

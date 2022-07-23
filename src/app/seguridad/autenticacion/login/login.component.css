@@ -1,0 +1,51 @@
+.example-card {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.example-header-image {
+    background-size: cover;
+}
+
+.example-form-field{
+    width: 100%;
+    font-size: 20px;
+}
+
+img{
+    width: 70%;
+    margin: 5% 15%;
+}
+
+.imagen-ingresar-white{
+    width: 8%;
+    margin: 3% 2%;
+    filter: invert(100%);
+}
+
+.imagen-ingresar-black{
+    width: 8%;
+    margin: 3% 2%;
+    filter: invert(70%);
+}
+
+.letras-invalido{
+    color: red;
+    font-family: "Monaco", monospace;
+    margin-bottom: 10px;
+    font-size: 18px;
+    margin-left: 2%;
+}
+
+mat-card{
+    background-color: rgba(228, 247, 205, 0.25);
+}
+.mat-raised-button{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 0px;
+    background-color: #465759;
+}
+
+

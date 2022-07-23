@@ -1,0 +1,67 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h1 mat-dialog-title>Deuda {{deuda.idDeuda}} </h1>
+    </div>
+    <div  class="col-md-2">
+        <button mat-flat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-fecha">
+                Fecha: {{getFecha(deuda.horaPrestamo)}}
+            </div>
+            <div class="col-md-6 text-hora">
+                Hora: {{getHora(deuda.horaPrestamo)}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Nombre</b>: {{deuda.nombrePrestamista}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Cantidad</b>: {{deuda.cantidadPrestada}}
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12">
+                <div class="container text">
+                    <b>Nota</b>: {{deuda.anotacionDeuda}}
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12 text-apuntador">
+                Deposito registrado por <b>{{deuda.nombreApuntador}}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <button mat-raised-button color="primary" (click)="actualizarOperacion()">
+                    <div class="cont-img-txt">
+                        <img alt="guardar" src="assets/actualizarOperacion.png">
+                        Pagar deuda
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="row anular" align="right">
+            <div class="col-md-12 ">
+                <a (click)="anularOperacion()" >Anular deuda</a>
+            </div>
+        </div>
+    </div>
+</div>

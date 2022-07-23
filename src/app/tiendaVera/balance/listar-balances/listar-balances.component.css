@@ -1,0 +1,58 @@
+table {
+    width: 100%;
+}
+
+.mat-column-horaPagoCredito{
+    font-weight: bold;
+}
+
+
+.mat-column-delete{
+    width: 0px;
+    text-align: right;
+}
+
+mat-form-field{
+    width: 100%;
+
+}
+
+.titulo{
+    color: #111111d9;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+h1{
+    font-family: Monaco, serif;
+}
+.flechas{
+   margin-top: 10px;
+}
+
+.botonFlecha{
+    background-color: transparent;
+    outline:none;
+}
+
+.mat-raised-button{
+    width: 100%;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: #808080;
+}
+
+span{
+    color: black;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+mat-expansion-panel{
+    background-color: #f4f4f4;
+}
+
+mat-divider{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}

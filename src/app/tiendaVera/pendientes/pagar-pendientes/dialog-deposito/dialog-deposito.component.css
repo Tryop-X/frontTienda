@@ -1,0 +1,57 @@
+h1{
+    text-align: center;
+}
+
+.text-fecha{
+    text-align: left;
+}
+
+.text-hora{
+    text-align: right;
+}
+.text-apuntador{
+    text-align: right;
+}
+mat-divider{
+    margin-top: 7px;
+    margin-bottom: 3px;
+
+}
+
+.text{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 40px;
+
+    -webkit-box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+    -moz-box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+    box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+
+    margin-top: 15px;
+}
+.mat-raised-button{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    margin-top: 10px;
+    background-color:  grey;
+}
+img{
+    width: 3.5%;
+    filter: invert(100%);
+    margin-right: 15px;
+}
+
+.mat-flat-button{
+    display: flex;
+    align-items: center;
+    height: 30px; float: right
+}
+.anular{
+    margin-top: 10px;
+    text-decoration: underline dodgerblue;
+    color: dodgerblue;
+    cursor: pointer;
+}

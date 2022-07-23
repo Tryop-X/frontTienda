@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>CODIGO DE SERVICIO</mat-label>
+                <input matInput type="text" [formControl]="controlCodigoServicio">
+            </mat-form-field>
+        </div>
+        <div class="col-md-6" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>NOMBRE DEL PROPIETARIO</mat-label>
+                <input matInput type="text" [formControl]="controlNombrePropietarioServicio">
+            </mat-form-field>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>CUOTA DEL SERVICIO</mat-label>
+                <input matInput type="number" [formControl]="controlCuotaServicio">
+            </mat-form-field>
+        </div>
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>VUELTO</mat-label>
+                <input matInput type="number" [formControl]="controlVueltoServicio">
+            </mat-form-field>
+        </div>
+        <div class="col-md-4" >
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>TIPO DE SERVICIO</mat-label>
+                <input matInput type="text" [formControl]="controlTipoServicio">
+            </mat-form-field>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-md-12 " >
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>NOTA</mat-label>
+                <input matInput #message maxlength="256" [disabled]="isChecked" [(ngModel)]="anotacionPagoServicio" [value]="getAnotacion()">
+                <mat-hint align="start"><strong></strong> </mat-hint>
+                <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row" align="center" style="position: relative">
+        <div class="col-md-12" align="center"  style="margin: 0 auto; height: 40px">
+            <span [ngClass]="{'textoCheck' : !isChecked, 'textoUncheck' : isChecked}">DEBEMOS</span>
+            <mat-slide-toggle color="warn" [(ngModel)]="isChecked"></mat-slide-toggle>
+            <span [ngClass]="{'textoCheck' : isChecked, 'textoUncheck' : !isChecked}">NOS DEBEN</span>
+        </div>
+        <div class="col-12" *ngIf="isChecked">
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>NOMBRE DEUDOR</mat-label>
+                <input matInput type="text" [formControl]="controlNombreDeudor">
+                <mat-error *ngIf="controlNombreDeudor.hasError('required')">
+                    No ha puesto nombre
+                </mat-error>
+                <mat-error *ngIf="controlNombreDeudor.hasError('maxlength')">
+                    Nombre demasiado largo
+                </mat-error>
+                <mat-error *ngIf="controlNombreDeudor.hasError('minlength')">
+                    Nombre muy corto
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-raised-button color="primary" (click)="guardar()" [disabled]="esValidoGuardar()">
+                <div class="cont-img-txt">
+                    <img src="assets/guardar.png" [ngClass]="{'img-white': !esValidoGuardar()}">
+                    GUARDAR
+                </div>
+            </button>
+        </div>
+    </div>
+</div>

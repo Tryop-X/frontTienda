@@ -1,0 +1,89 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h1 mat-dialog-title>Sumar billetes</h1>
+    </div>
+    <div  class="col-md-2">
+        <button mat-flat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+<div mat-dialog-content>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/10so.png" alt="billete">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad de billetes de 10 soles</mat-label>
+                    <input matInput type="number" [(ngModel)]="cant10">
+                </mat-form-field>            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/20so.png" alt="">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad de billetes de 20 soles</mat-label>
+                    <input matInput type="number" [(ngModel)]="cant20">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/50so.png" alt="">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad de billetes de 50 soles</mat-label>
+                    <input matInput type="number" [(ngModel)]="cant50">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/100so.png" alt="">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad de billetes de 100 soles</mat-label>
+                    <input matInput type="number" [(ngModel)]="cant100">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/200so.png" alt="">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Cantidad de billetes de 200 soles</mat-label>
+                    <input matInput type="number" [(ngModel)]="cant200">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="assets/billetes/monedas.png" alt="">
+            </div>
+            <div class="col-md-8">
+                <mat-form-field class="example-form-field" appearance="fill">
+                    <mat-label>Dinero en monedas</mat-label>
+                    <input matInput type="number" [(ngModel)]="saldoMonedas">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 10px;">
+
+    <div class="col-md-12">
+        <h1 mat-dialog-title>Dinero total: <b>{{getDineroTotal()}}</b></h1>
+    </div>
+</div>

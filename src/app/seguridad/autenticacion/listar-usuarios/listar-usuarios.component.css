@@ -1,0 +1,11 @@
+table {
+    width: 50%;
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: rgba(200, 206, 190, 0.25);
+}
+
+.mat-column-delete{
+    width: 0px;
+    text-align: right;
+}

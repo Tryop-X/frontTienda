@@ -1,0 +1,51 @@
+table {
+    width: 100%;
+}
+
+
+
+.mat-column-estado{
+    width: 0px;
+    text-align: right;
+}
+
+mat-form-field{
+    width: 100%;
+}
+
+.titulo{
+    color: #111111d9;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+h1{
+    font-family: Monaco, serif;
+    text-align: center;
+}
+
+.flechas{
+    margin-top: 10px;
+}
+
+.botonFlecha{
+    background-color: transparent;
+    outline:none;
+}
+
+
+span{
+    color: black;
+    font-size: 18px;
+    margin-right: 8px;
+}
+
+.text-rojo{
+    color: darkred;
+}
+.text-verde{
+    color: darkgreen;
+}
+.text-amarillo{
+    color: orange;
+}

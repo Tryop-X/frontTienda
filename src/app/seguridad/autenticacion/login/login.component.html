@@ -1,0 +1,53 @@
+<div class="container" *ngIf="!isLogged">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar> <img src="assets/user.png"> </div>
+            <mat-card-title>Iniciar sesi&oacute;n</mat-card-title>
+            <mat-card-subtitle>Librer&iacute;a Vera</mat-card-subtitle>
+        </mat-card-header>
+        <img src="assets/logos/logo_small.png">
+        <mat-card-content>
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput type="text"  required [(ngModel)]="userName">
+            </mat-form-field>
+            <mat-form-field class="example-form-field" appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" required [(ngModel)]="password">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div class="row letras-invalido" *ngIf="isLogginFail">
+                Usuario o contrase&ntilde;a incorrectos
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button mat-raised-button color="primary" [disabled]="esValido()" (click)="iniciarSesion()">
+                        <div class="cont-img-txt">
+                            <img src="assets/login.png" [ngClass]="{'imagen-ingresar-black': esValido(), 'imagen-ingresar-white': !esValido()}">
+                            Ingresar
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

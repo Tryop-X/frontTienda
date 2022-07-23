@@ -1,0 +1,86 @@
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+        <h1 mat-dialog-title>Pago de cr&eacute;dito {{pagoCredito.idPagoCredito}} </h1>
+    </div>
+    <div  class="col-md-2">
+        <button mat-flat-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+</div>
+
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-fecha">
+                Fecha: {{getFecha(pagoCredito.horaPagoCredito)}}
+            </div>
+            <div class="col-md-6 text-hora">
+                Hora: {{getHora(pagoCredito.horaPagoCredito)}}
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>DNI</b>: {{pagoCredito.credito.dniPropietario}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container text">
+                    <b>Nombre</b>: {{pagoCredito.credito.nombrePropietarioCredito}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Cuota</b>: {{pagoCredito.credito.cuotaCredito}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Vuelto</b>: {{pagoCredito.vueltoPagoCredito}}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="container text">
+                    <b>Pagar&eacute;</b>: {{pagoCredito.credito.numeroPagare}}
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12">
+                <div class="container text">
+                    <b>Nota</b>: {{pagoCredito.anotacionPagoCredito}}
+                </div>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="notaVacia()">
+            <div class="col-md-12 text-apuntador">
+                Deposito registrado por <b>{{pagoCredito.nombreApuntador}}</b>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <button mat-raised-button color="primary" (click)="actualizarOperacion()">
+                    <div class="cont-img-txt">
+                        <img alt="guardar" src="assets/actualizarOperacion.png">
+                        Pagar cr&eacute;dito
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div class="row anular" align="right">
+            <div class="col-md-12 ">
+                <a (click)="anularOperacion()" >Anular pago de cr&eacute;dito</a>
+            </div>
+        </div>
+
+    </div>
+</div>

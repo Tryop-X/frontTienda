@@ -1,0 +1,77 @@
+<h1>
+    Lista de dep&oacute;sitos
+</h1>
+
+<table mat-table [dataSource]="dataSource_cuenta"
+       class="mat-elevation-z8 " >
+
+    <ng-container matColumnDef="idDeposito">
+        <th mat-header-cell *matHeaderCellDef >ID</th>
+        <td mat-cell *matCellDef="let element"
+        >
+            {{element.idDeposito}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreProietario">
+        <th mat-header-cell *matHeaderCellDef >Nombre</th>
+        <td mat-cell *matCellDef="let element"
+        >{{ element.cuenta.nombrePropietarioCuenta }}</td>
+    </ng-container>
+    <ng-container matColumnDef="numeroCuenta">
+        <th mat-header-cell *matHeaderCellDef >N° de cuenta</th>
+        <td mat-cell *matCellDef="let element"
+        >{{ element.cuenta.numeroCuenta }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dniDepositante">
+        <th mat-header-cell *matHeaderCellDef >DNI</th>
+        <td mat-cell *matCellDef="let element"
+        >
+            {{element.dniDepositante}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="dineroDeposita">
+        <th mat-header-cell *matHeaderCellDef >Monto</th>
+        <td mat-cell *matCellDef="let element"
+        >{{ element.dineroDepositar }}</td>
+    </ng-container>
+    <ng-container matColumnDef="horaDeposito">
+        <th mat-header-cell *matHeaderCellDef >Fecha</th>
+        <td mat-cell *matCellDef="let element"
+        >{{ [getFecha(element.horaDeposito)] }}</td>
+    </ng-container>
+    <ng-container matColumnDef="estadoDeposito">
+        <th mat-header-cell *matHeaderCellDef >Estado</th>
+        <td mat-cell *matCellDef="let element"
+            [ngClass]="{'text-rojo': esRojo(element.estadoDeposito),
+            'text-amarillo': esAmarillo(element.estadoDeposito),
+            'text-verde': esVerde(element.estadoDeposito)}"
+        >{{ element.estadoDeposito }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+<div class="row flechas" >
+    <div class="col-md-4">
+
+        <button mat-button (click)="cargarAnterior()" [disabled]="primeraPagina">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+    </div>
+
+    <div class="col-md-4" align="center">
+            <span *ngFor="let p of totalPage; let i = index">
+                <a style="cursor: pointer" (click)="cargarByNumPag(i)"
+                   [ngClass]="{'text-primary': i===page, 'text-black': i!=page}"> {{i+1}}</a>
+            </span>
+    </div>
+    <div class="col-md-4" align="right">
+
+        <button mat-button (click)="cargarSiguiente()" [disabled]="ultimaPagina">
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div>
+</div>

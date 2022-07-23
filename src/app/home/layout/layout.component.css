@@ -1,0 +1,29 @@
+
+
+.mat-raised-button{
+    width: 100%;
+    height: 80px;
+    margin-top: 10px;
+    font-size: 25px;
+    background-color: #808080;
+
+}
+
+.cont-img-txt{
+    width: 50%;
+    margin-left: 25%;
+    text-align: left;
+}
+img{
+    margin-right: 80px;
+    align-content: initial;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.row{
+    padding: 0 1rem;
+    margin: 1rem;
+}

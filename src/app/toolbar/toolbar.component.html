@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" style="background:  #111111d9">
+    <button mat-button  routerLink="/"><mat-icon>home</mat-icon> Inicio</button>
+    <button mat-flat-button *ngIf="islogged" (click)="abrirSumaBilletes()">Sumar billetes</button>
+    <span class="example-spacer"></span>
+    <span *ngIf="islogged" class="cont-user"> <img src="assets/user.png" alt="icono-usuario"> {{nombreUsuario}}</span>
+    <button mat-button *ngIf="isAdmin" routerLink="/registro" style="margin-right: 12px">
+        <mat-icon>person_add</mat-icon>Crear usuario</button>
+    <button mat-button *ngIf="islogged" (click)="logOut()">
+        <mat-icon>exit_to_app</mat-icon>Cerrar sesi&oacute;n</button>
+    <button mat-button  routerLink="/login" *ngIf="!islogged">
+        <mat-icon>person_outline</mat-icon>Iniciar sesi&oacute;n</button>
+</mat-toolbar>

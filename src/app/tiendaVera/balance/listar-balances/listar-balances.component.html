@@ -1,0 +1,157 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-12 align-content-center titulo">
+            <h1 align="center">{{panelOpenState ? 'AGREGANDO BALANCE':"LISTA DE BALANCES"}}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <mat-accordion>
+                <mat-expansion-panel (opened)="panelOpenState = true"
+                                     (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon> add icon</mat-icon>
+                        </mat-panel-title>
+                        <mat-panel-description style="margin-left: 20%; font-size: 18px; color: black   ">
+                            {{panelOpenState ? 'Saldo del d&iacute;a : '+ [getSaldoDia()]  :"Agregar balance"}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                        <div class="row justify-content-center">
+                            <div class="col-md-3">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                    <mat-label>EFECTIVO</mat-label>
+                                    <input matInput type="number" [(ngModel)]="efectivo" required>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                    <mat-label>CAJA PIURA</mat-label>
+                                    <input matInput type="number" [(ngModel)]="cajaPiura" required>
+                                </mat-form-field>
+
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-form-field" appearance="fill">
+                                    <mat-label>BANCO DE LA NACI&Oacute;N</mat-label>
+                                    <input matInput type="number" [(ngModel)]="bancoNacion" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-3">
+                            <p>Debemos: {{nuestrasDeudas}}</p>
+
+                        </div>
+                        <div class="col-md-3">
+                            <p>Nos deben: {{dineroPrestado}}</p>
+
+                        </div>
+                        <div class="col-md-3">
+                            <p>Vueltos: {{vueltos}}</p>
+
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-9">
+                            <button mat-raised-button color="primary" (click)="guardar()" [disabled]="esValidoGuardar()">
+                                <div class="cont-img-txt">
+                                    GUARDAR
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+
+            <mat-divider></mat-divider>
+
+            <div>
+                <table mat-table [dataSource]="dataSource_balance"
+                        class="mat-elevation-z8 " >
+                    
+                    <ng-container matColumnDef="horaPagoCredito">
+                        <th mat-header-cell *matHeaderCellDef >Fecha</th>
+                        <td mat-cell *matCellDef="let element"
+                            >
+                                {{[getFecha(element.horaPagoCredito)]}}
+                            </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="saldoDia">
+                        <th mat-header-cell *matHeaderCellDef >Saldo del d&iacute;a</th>
+                        <td mat-cell *matCellDef="let element"
+                            style="  font-family: sans-serif; color: darkgreen"
+                        >{{ element.saldoDia }}</td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="saldoCajaPiura">
+                        <th mat-header-cell *matHeaderCellDef >Caja Piura</th>
+                        <td mat-cell *matCellDef="let element">{{ element.saldoCajaPiura }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="saldoBN">
+                        <th mat-header-cell *matHeaderCellDef >Banco N.</th>
+                        <td mat-cell *matCellDef="let element">{{ element.saldoBN }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="saldoEfectivo">
+                        <th mat-header-cell *matHeaderCellDef >Efectivo</th>
+                        <td mat-cell *matCellDef="let element">{{ element.saldoEfectivo }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="nuestrasDeudas">
+                        <th mat-header-cell *matHeaderCellDef >Debemos</th>
+                        <td mat-cell *matCellDef="let element">{{ element.nuestrasDeudas }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="dineroPrestado">
+                        <th mat-header-cell *matHeaderCellDef >Prestado</th>
+                        <td mat-cell *matCellDef="let element">{{ element.dineroPrestado }}</td>
+                    </ng-container>
+                    <ng-container matColumnDef="vueltos">
+                        <th mat-header-cell *matHeaderCellDef >vueltos</th>
+                        <td mat-cell *matCellDef="let element">{{ element.vueltos }}</td>
+                    </ng-container>
+
+
+
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-button color="primary" (click)="deleteBalance(element.idBalance)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row flechas" >
+        <div class="col-md-4">
+
+            <button mat-button (click)="cargarAnterior()" [disabled]="primeraPagina">
+                <mat-icon>keyboard_arrow_left</mat-icon>
+            </button>
+        </div>
+
+        <div class="col-md-4" align="center">
+            <span *ngFor="let p of totalPage; let i = index">
+                <a style="cursor: pointer" (click)="cargarByNumPag(i)"
+                   [ngClass]="{'text-primary': i===page, 'text-black': i!=page}"> {{i+1}}</a>
+            </span>
+        </div>
+        <div class="col-md-4" align="right">
+
+            <button mat-button (click)="cargarSiguiente()" [disabled]="ultimaaPagina">
+                <mat-icon>keyboard_arrow_right</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>

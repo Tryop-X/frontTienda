@@ -1,0 +1,25 @@
+.mat-column-fecha{
+    font-weight: bold;
+}
+.mat-column-realizar{
+    width: 0px;
+    text-align: right;
+}
+.cont-lista{
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+    -moz-box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+    box-shadow: inset 0px 0px 15px -7px rgba(173,173,173,1);
+    padding-top: 18px;
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+}
+
+.text-title{
+    text-align: center;
+}
+
+mat-divider{
+    margin-top: 2px;
+    margin-bottom: 8px;
+}
