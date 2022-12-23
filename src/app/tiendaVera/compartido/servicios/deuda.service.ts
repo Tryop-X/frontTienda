@@ -26,4 +26,9 @@ export class DeudaService {
   getDeudaByPag(page: number, size: number){
     return this.http.get<any>(this.apiBase+'/pag?page='+page+'&size='+size)
   }
+
+  getDeudor(numDocumento: string){
+    return this.http.get<any>(environment.apiBase+'/deudores/'+numDocumento)
+  }
+
 }

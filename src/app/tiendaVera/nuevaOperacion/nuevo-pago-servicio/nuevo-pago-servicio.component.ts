@@ -75,6 +75,30 @@ export class NuevoPagoServicioComponent implements OnInit {
   }
   guardarPagoServicio() {
     this.setDatosPagoServicio();
+    this.servicioDeuda.getDeudor(this.controlCodigoServicio.value).subscribe(
+        (data: any)=>{
+          if(data['satisfactorio'] == true || data['data'] != null){
+            console.log(data)
+            const deudor = data['data']
+            Alertas.smsDeudor("¿Desea prestar a una persona Morosa?",  deudor['nombreDeudor'] ,deudor['deudas'][0]['monto'], deudor['deudas'][0]['afavor']).then(respuesta =>{
+              if(respuesta.value){
+                this.sePuedeGuardar();
+              }
+            })
+          }else{
+            Alertas.noDeudor()
+            this.sePuedeGuardar();
+          }
+        }, error => {
+          Alertas.sinDatosDeudos()
+          this.sePuedeGuardar();
+        }
+    )
+
+
+  }
+
+  sePuedeGuardar(){
     this.servicioPago.guardarPagoServicio(this.pagoServicio).subscribe(
         ()=>{
           this.router.navigate(['/'])

@@ -4,6 +4,7 @@ import {Deuda} from "../../compartido/modelos/deuda.model";
 import Swal from "sweetalert2";
 import {TokenService} from "../../../seguridad/servicios/token.service";
 import {Router} from "@angular/router";
+import {Alertas} from "../../compartido/alertas/alertas";
 
 @Component({
   selector: 'app-nueva-deuda',
@@ -32,7 +33,29 @@ export class NuevaDeudaComponent implements OnInit {
   }
   guardarDeuda() {
     this.setDatosDeuda()
-    console.log(this.deuda)
+
+    this.servicioDeuda.getDeudor(this.nombrePrestamista).subscribe(
+        (data: any)=>{
+          if(data['satisfactorio'] == true || data['data'] != null){
+            console.log(data)
+            const deudor = data['data']
+            Alertas.smsDeudor("¿Desea prestar a una persona Morosa?",  deudor['nombreDeudor'] ,deudor['deudas'][0]['monto'], deudor['deudas'][0]['afavor']).then(respuesta =>{
+              if(respuesta.value){
+                this.sePuedeGuardar();
+              }
+            })
+          }else{
+            Alertas.noDeudor()
+            this.sePuedeGuardar();
+          }
+        }, error => {
+          Alertas.sinDatosDeudos()
+          this.sePuedeGuardar();
+        }
+    )
+  }
+
+  sePuedeGuardar(){
     this.servicioDeuda.guardarDeuda(this.deuda).subscribe(
         ()=>{
           this.router.navigate(['/'])

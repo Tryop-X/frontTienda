@@ -20,7 +20,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Cantidad de billetes de 10 soles</mat-label>
-                    <input matInput type="number" [(ngModel)]="cant10">
+                    <input matInput type="number" min="0" [(ngModel)]="cant10">
                 </mat-form-field>            </div>
         </div>
         <div class="row">
@@ -30,7 +30,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Cantidad de billetes de 20 soles</mat-label>
-                    <input matInput type="number" [(ngModel)]="cant20">
+                    <input matInput type="number" min="0" [(ngModel)]="cant20">
                 </mat-form-field>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Cantidad de billetes de 50 soles</mat-label>
-                    <input matInput type="number" [(ngModel)]="cant50">
+                    <input matInput type="number" min="0" [(ngModel)]="cant50">
                 </mat-form-field>
             </div>
         </div>
@@ -52,7 +52,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Cantidad de billetes de 100 soles</mat-label>
-                    <input matInput type="number" [(ngModel)]="cant100">
+                    <input matInput type="number" min="0" [(ngModel)]="cant100">
                 </mat-form-field>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Cantidad de billetes de 200 soles</mat-label>
-                    <input matInput type="number" [(ngModel)]="cant200">
+                    <input matInput type="number" min="0" [(ngModel)]="cant200">
                 </mat-form-field>
             </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="col-md-8">
                 <mat-form-field class="example-form-field" appearance="fill">
                     <mat-label>Dinero en monedas</mat-label>
-                    <input matInput type="number" [(ngModel)]="saldoMonedas">
+                    <input matInput type="number" min="0" [(ngModel)]="saldoMonedas">
                 </mat-form-field>
             </div>
         </div>

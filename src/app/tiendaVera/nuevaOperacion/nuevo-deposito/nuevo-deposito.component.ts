@@ -92,7 +92,29 @@ export class NuevoDepositoComponent implements OnInit {
     this.guardarOperaciones();
   }
   guardarDeposito(){
-    this.setDatosDeposito()
+    this.setDatosDeposito();
+    this.servicioDeuda.getDeudor(this.controlDniDepositante.value).subscribe(
+        (data: any)=>{
+          if(data['satisfactorio'] == true || data['data'] != null){
+            console.log(data)
+            const deudor = data['data']
+            Alertas.smsDeudor("¿Desea prestar a una persona Morosa?",  deudor['nombreDeudor'] ,deudor['deudas'][0]['monto'], deudor['deudas'][0]['afavor']).then(respuesta =>{
+              if(respuesta.value){
+                this.sePuedeGuardar();
+              }
+            })
+          }else{
+            Alertas.noDeudor()
+            this.sePuedeGuardar();
+          }
+        }, error => {
+          Alertas.sinDatosDeudos()
+          this.sePuedeGuardar();
+        }
+    )
+  }
+
+  sePuedeGuardar(){
     this.servicioDeposito.guardarDeposito(this.deposito).subscribe(
         ()=>{
           this.router.navigate(['/'])
@@ -103,6 +125,7 @@ export class NuevoDepositoComponent implements OnInit {
         }
     )
   }
+
   esValidoGuardar() {
     if(this.controlNumCuenta.invalid) {
       return true

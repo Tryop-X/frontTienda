@@ -97,15 +97,39 @@ export class NuevoPagoCreditoComponent implements OnInit {
   }
   guardarPagoCredito() {
       this.setDatosPagoCredito();
-      this.pagoCreditoService.guardarPagoCredito(this.pagoCredito).subscribe(
-          ()=>{
-            this.router.navigate(['/'])
-            Alertas.smsSatisfactorio(this.operacionRealizar +" guardados satisfactoriamente")
-          },
-          error => {
-            Alertas.smsError("Error",this.mensaje)
+
+
+    this.servicioDeuda.getDeudor(this.controlDniPropietario.value).subscribe(
+        (data: any)=>{
+          if(data['satisfactorio'] == true || data['data'] != null){
+            console.log(data)
+            const deudor = data['data']
+            Alertas.smsDeudor("¿Desea prestar a una persona Morosa?",  deudor['nombreDeudor'] ,deudor['deudas'][0]['monto'], deudor['deudas'][0]['afavor']).then(respuesta =>{
+              if(respuesta.value){
+                this.sePuedeGuardar();
+              }
+            })
+          }else{
+            Alertas.noDeudor()
+            this.sePuedeGuardar();
           }
-      )
+        }, error => {
+          Alertas.sinDatosDeudos()
+          this.sePuedeGuardar();
+        }
+    )
+  }
+
+  sePuedeGuardar(){
+    this.pagoCreditoService.guardarPagoCredito(this.pagoCredito).subscribe(
+        ()=>{
+          this.router.navigate(['/'])
+          Alertas.smsSatisfactorio(this.operacionRealizar +" guardados satisfactoriamente")
+        },
+        error => {
+          Alertas.smsError("Error",this.mensaje)
+        }
+    )
   }
   getAnotacion() {
     if(this.isChecked){
